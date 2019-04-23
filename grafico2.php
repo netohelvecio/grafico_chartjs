@@ -61,6 +61,7 @@ if($resposta1 == 0 && $resposta2 == 0 && $resposta3 == 0 && $resposta4 == 0 && $
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
+    
 
     <style>
         .tamanho{
@@ -77,7 +78,7 @@ if($resposta1 == 0 && $resposta2 == 0 && $resposta3 == 0 && $resposta4 == 0 && $
             <option value="campanha">Campanha</option>
         </select>
 
-        <input type="text" name="parametro"> 
+        <input type="text" name="parametro" onkeypress="myFunction()"> 
         <input type="submit" value="Buscar"> 
     </form>
     
@@ -87,32 +88,35 @@ if($resposta1 == 0 && $resposta2 == 0 && $resposta3 == 0 && $resposta4 == 0 && $
 
 
     <script>
-    new Chart(document.getElementById("pie-chart"), {
-        type: 'pie',
-        data: {
-        labels: ["Pergunta 1", "Pergunta 2", "Pergunta 3", "Pergunta 4", "Pergunta 5"],
-        datasets: [{
-            label: "Quantidade de respostas",
-            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-            hoverBorderColor: "#000000",          
-            hoverBorderWidth: 1.5,
-            data: [<?php echo $resposta1 ?>,<?php echo $resposta2 ?>,<?php echo $resposta3 ?>,<?php echo $resposta4 ?>,<?php echo $resposta5 ?>],
-        }],
-        
-        },
-        options: {
-        //responsive: true,
-        title: {
-            display: true,
-            text: 'Quantidade de resposta por perguntas',
-        },
-        animation:{
-            easing: "easeInQuad", //easeOutBack,easeInOutCirc,easeOutCirc,easeOutExpo,easeInOutQuint,easeInQuint
-            animateScale: true,
-            animateRotate: true
-        }
-        }
-    });
+        Chart.defaults.global.defaultFontFamily = 'Helvetica';
+        Chart.defaults.global.defaultFontSize = 15;
+
+        new Chart(document.getElementById("pie-chart"), {
+            type: 'pie',
+            data: {
+            labels: ["Pergunta 1", "Pergunta 2", "Pergunta 3", "Pergunta 4", "Pergunta 5"],
+            datasets: [{
+                label: "Quantidade de respostas",
+                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                hoverBorderColor: "#000000",          
+                hoverBorderWidth: 1.5,
+                data: [<?php echo $resposta1 ?>,<?php echo $resposta2 ?>,<?php echo $resposta3 ?>,<?php echo $resposta4 ?>,<?php echo $resposta5 ?>],
+            }],
+            
+            },
+            options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Quantidade de respostas por perguntas',
+            },
+            animation:{
+                easing: "easeInQuad", //easeOutBack,easeInOutCirc,easeOutCirc,easeOutExpo,easeInOutQuint,easeInQuint
+                animateScale: true,
+                animateRotate: true
+            }
+            }
+        });
     </script>
 </body>
 </html>
